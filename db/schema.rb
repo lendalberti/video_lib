@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140606143225) do
+ActiveRecord::Schema.define(version: 20161216143206) do
 
   create_table "badge_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer  "badge_id"
@@ -39,7 +39,6 @@ ActiveRecord::Schema.define(version: 20140606143225) do
     t.integer  "company_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.index ["company_id"], name: "index_users_on_company_id", using: :btree
   end
 
   create_table "video_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
@@ -57,4 +56,8 @@ ActiveRecord::Schema.define(version: 20140606143225) do
     t.datetime "updated_at"
   end
 
+  add_foreign_key "badge_users", "badges", on_delete: :cascade
+  add_foreign_key "badge_users", "users", on_delete: :cascade
+  add_foreign_key "video_users", "users", on_delete: :cascade
+  add_foreign_key "video_users", "videos", on_delete: :cascade
 end

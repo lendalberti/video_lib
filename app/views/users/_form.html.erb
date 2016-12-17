@@ -16,8 +16,9 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :company %><br>
-    <%= f.text_field :company %>
+    <%= f.label :company_id %><br>
+    <!-- < %= f.text_field :company %> -->
+    <%= select_tag( :company_id, options_for_select( Company.all.collect {|p| [ p.name, p.id ] } ) ) %>
   </div>
   <div class="actions">
     <%= f.submit %>

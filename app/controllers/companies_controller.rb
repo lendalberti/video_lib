@@ -10,6 +10,8 @@ class CompaniesController < ApplicationController
   # GET /companies/1
   # GET /companies/1.json
   def show
+    @company = @company.decorate(view_context)
+    @users = User.where( :company_id => @company.id)
   end
 
   # GET /companies/new

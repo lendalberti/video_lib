@@ -1,9 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @company.name %>
-</p>
+<%= container_tag do %>
+  <h1><%= @company.infos %></h1>
+<% end %>
 
-<%= link_to 'Edit', edit_company_path(@company) %> |
-<%= link_to 'Back', companies_path %>
+<%= container_3_tag @users, rows: {cols: {class: 'text-center'}} do |u| %>
+  <h2><%= u.name %></h2>
+  <span><%= "Badges: #{u.badges.size}" %></span>
+<% end %>
+
+<%= container_tag id: 'links', class: 'text-center' do %>
+  <%= btn_to 'Edit', edit_company_path(@company) %>
+  <%= btn_to 'Back', companies_path %>
+<% end %>

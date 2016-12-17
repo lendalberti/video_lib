@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
   has_many :video_users
   has_many :videos, through: :video_users
 
+  validates_presence_of :name
+
   def to_s
     name
   end
