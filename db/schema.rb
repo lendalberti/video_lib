@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161216143206) do
+ActiveRecord::Schema.define(version: 20161217173531) do
 
   create_table "badge_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer  "badge_id"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20161216143206) do
   create_table "video_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer  "video_id"
     t.integer  "user_id"
+    t.integer  "iterations"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["user_id"], name: "index_video_users_on_user_id", using: :btree

@@ -1,0 +1,12 @@
+
+<p id="notice"><%= notice %></p>
+
+<%= container_tag do %>
+  <h1><%= @video.display %></h1>
+<% end %>
+
+
+<%= container_tag id: 'links', class: 'text-center' do %>
+  <%= btn_to 'Edit', edit_video_path(@video) %>
+  <%= btn_to 'Back', videos_path %>
+<% end %>
