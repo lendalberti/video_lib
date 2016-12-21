@@ -14,11 +14,13 @@ class BadgesController < ApplicationController
 
   # GET /badges/new
   def new
-    @badge = Badge.new
+    @badge       = Badge.new
+    @video_count = Video.count
   end
 
   # GET /badges/1/edit
   def edit
+    @video_count = Video.count
   end
 
   # POST /badges
@@ -69,6 +71,7 @@ class BadgesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def badge_params
-      params.require(:badge).permit(:title, :fa_symbol)
+      params.require(:badge).permit(:name, :fa_symbol,)
     end
+
 end

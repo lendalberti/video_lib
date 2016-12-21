@@ -1,5 +1,7 @@
 class CompanyDecorator < RKit::Decorator::Base
-  def infos
-    "Currently working at #{ self }:"
+
+  def employees
+    "#{ self } Employees:"
   end
+
 end

@@ -1,4 +1,6 @@
 class CompaniesController < ApplicationController
+  include CompaniesHelper
+  
   before_action :set_company, only: [:show, :edit, :update, :destroy]
 
   # GET /companies
@@ -12,6 +14,7 @@ class CompaniesController < ApplicationController
   def show
     @company = @company.decorate(view_context)
     @users = User.where( :company_id => @company.id)
+    @badges = get_company_badges(@company)
   end
 
   # GET /companies/new

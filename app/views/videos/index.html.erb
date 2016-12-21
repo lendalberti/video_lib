@@ -7,23 +7,19 @@
         var match    = /^video_(\d+)$/.exec(tmp);
         var video_id = RegExp.$1;
 
+        // kludge, I know...
         tmp = '<%= video_register_path(999) %>'
         var url = tmp.replace("999", video_id);
 
-        // 'register' as watched
         $.ajax({
             type: "GET",
             url: url,
             success: function(res)  {
                 console.log( res.message );
                 $('#iterations').html( res.iterations );
-            },
-            error: function (jqXHR, textStatus, errorThrown)  {
-                alert("Could not register video; error=\n\n" + errorThrown + ", jqXHR="+jqXHR);
             }
         });
     });
-
   });
 
 </script>

@@ -16,6 +16,10 @@
  *= require_self
  */
 
+body {
+  margin: 20px;
+}
+
 body > table > tbody > tr:hover {
   background-color: #DFFFBF;
 }

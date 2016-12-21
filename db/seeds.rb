@@ -7,27 +7,38 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 videos = Video.create [
-  {name: 'Ruby variables'},
-  {name: 'Ruby operators'},
-  {name: 'Ruby methods'},
-  {name: 'Ruby classes'},
+  { name: 'Ruby Variables' },
+  { name: 'Ruby Operators' },
+  { name: 'Ruby Methods'   },
+  { name: 'Ruby Classes'   },
 ]
 
 badges = Badge.create [
-  {name: 'Half-Way', fa_symbol: 'bookmark-o'},
-  {name: 'All-Way', fa_symbol: 'bookmark'},
-  {name: 'SpeedRun', fa_symbol: 'bolt'},
+  { name: 'Half-Way', fa_symbol: 'bookmark-o' },
+  { name: 'All-Way',  fa_symbol: 'bookmark'   },
+  { name: 'SpeedRun', fa_symbol: 'bolt'       },
+  { name: 'Cube3',    fa_symbol: 'cubes'      },
 ]
 
 companies = Company.create [
-  {name: 'Vodeclic'},
-  {name: 'thoughtbot'},
-  {name: 'Basecamp'},
+  { name: 'Vodeclic'   },
+  { name: 'Thoughtbot' },
+  { name: 'Basecamp'   },
+  { name: 'IBM'        },
+  { name: 'Honeywell'  },
 ]
 
 users = User.create [
-  {name: 'Thomas', company: companies.first, videos: videos, badges: badges[0..1]},
-  {name: 'Guillaume', company: companies.first, videos: videos[0..1], badges: [badges.first]},
-  {name: 'David Heinemeier Hansson', company: companies.second},
-  {name: 'Joe Ferris', company: companies.third, videos: [videos.fourth], badges: [badges.third]},
+  { name: 'Tom',  company: companies.first   },
+  { name: 'Bill', company: companies.first   },
+  { name: 'Dave', company: companies.second  },
+  { name: 'Joe',  company: companies.third   },
+  { name: 'Len',  company: companies.fourth  },
+]
+
+rules = Rule.create [
+  { name: 'Half',  badge_name: 'Half-Way', video_name: '*',            view_count: 2 },
+  { name: 'Full',  badge_name: 'All-Way',  video_name: '*',            view_count: 0 },
+  { name: 'Speed', badge_name: 'SpeedRun', video_name: 'Ruby Classes', view_count: 1 },
+  { name: 'Cubes', badge_name: 'Cube3',    video_name: 'Ruby Methods', view_count: 3 },
 ]

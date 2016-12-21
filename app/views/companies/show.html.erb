@@ -1,15 +1,30 @@
 <p id="notice"><%= notice %></p>
 
+  <div class='container' style='border-bottom: 1px solid lightgray;'>
+	 <span style='font-size: 2em;'>Company-Owned Badge(s): </span>
+
+	 	<% if @badges.empty? %>
+	 		<span class='symbol'>none</span> 
+	 	<% else %>
+		  <% @badges.each do |b| %>
+		  	<span style='font-size: .3em;' class='symbol'><%= fa_icon b %></span> 
+			<% end %>
+		<% end %>
+	</div>
+
 <%= container_tag do %>
-  <h1><%= @company.infos %></h1>
+  <h2><%= @company.employees %></h2>
 <% end %>
 
 <%= container_3_tag @users, rows: {cols: {class: 'text-center'}} do |u| %>
-  <h2><%= u.name %></h2>
-  <span><%= "Badges: #{u.badges.size}" %></span>
+  <h3><%= u.name %></h3>
+  <% u.badges.each do |b| %>
+    <span class='symbol'><%= fa_icon b.fa_symbol %></span> 
+	<% end %>
 <% end %>
 
 <%= container_tag id: 'links', class: 'text-center' do %>
   <%= btn_to 'Edit', edit_company_path(@company) %>
   <%= btn_to 'Back', companies_path %>
 <% end %>
+
