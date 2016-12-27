@@ -12,3 +12,13 @@ development:
   username: badges
   password: badges
   host:     localhost
+
+
+test:
+  <<: *default
+  database: badges_test
+  username: badges
+  password: badges
+  host:     localhost
+
+

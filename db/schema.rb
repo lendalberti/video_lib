@@ -10,33 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161216143210) do
+ActiveRecord::Schema.define(version: 20161223194641) do
 
   create_table "badges", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.string   "name"
-    t.string   "fa_symbol"
+    t.string   "name",       null: false
+    t.string   "fa_symbol",  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "companies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.string   "name"
+    t.string   "name",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "rules", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.string   "name"
-    t.string   "badge_name"
-    t.string   "video_name"
-    t.integer  "view_count"
+    t.string   "name",       null: false
+    t.string   "badge_name", null: false
+    t.string   "video_name", null: false
+    t.integer  "view_count", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "user_badges", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.integer  "user_id"
-    t.integer  "badge_id"
+    t.integer  "user_id",    null: false
+    t.integer  "badge_id",   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["badge_id"], name: "index_user_badges_on_badge_id", using: :btree
@@ -44,9 +44,9 @@ ActiveRecord::Schema.define(version: 20161216143210) do
   end
 
   create_table "user_videos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.integer  "video_id"
-    t.integer  "user_id"
-    t.integer  "iterations", default: 0
+    t.integer  "video_id",               null: false
+    t.integer  "user_id",                null: false
+    t.integer  "iterations", default: 0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["user_id"], name: "index_user_videos_on_user_id", using: :btree
@@ -54,15 +54,15 @@ ActiveRecord::Schema.define(version: 20161216143210) do
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.string   "name"
-    t.integer  "company_id"
+    t.string   "name",       null: false
+    t.integer  "company_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["company_id"], name: "fk_rails_7682a3bdfe", using: :btree
   end
 
   create_table "videos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.string   "name"
+    t.string   "name",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

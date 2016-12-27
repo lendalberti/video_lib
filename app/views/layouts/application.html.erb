@@ -13,14 +13,22 @@
   <div id="current_user">
     <%= container_tag do %>
       <%= row_tag do %>
-        <%= col_3_tag do %>
+        <%= col_4_tag do %>
           Current Logged User is : <%= current_user %>
+
+          <% if !current_user.nil? %>
+            <% user_badges = UserBadge.where(:user_id => current_user.id) %>
+            <% user_badges.each do |ub| %>
+                <span class='symbol' style='padding-left: 5px;font-size: .2em;'><%= fa_icon ub.badge.fa_symbol %></span>
+            <% end %>
+          <% end %>
+
         <% end %>
 
-        <%= col_6_tag do %>
+        <%= col_4_tag do %>
           Log in as :
           <% User.all.each do |user| %>
-            <%= link_to " #{ user }", log_in_path(id: user) %> -
+            <%= link_to "#{ user }", log_in_path(id: user) %> -
           <% end %>
         <% end %>
 
@@ -32,7 +40,7 @@
   </div>
 
   <div id="current_controller">
-    <%= container_3_tag [:companies, :users, :videos, :badges], id: :current_controller, rows: {cols: {class: 'text-center'}} do |controller| %>
+    <%= container_2_tag [:rules, :companies, :users, :videos, :badges], id: :current_controller, rows: {cols: {class: 'text-center'}} do |controller| %>
       <%= link_to controller, send("#{ controller }_path") %>
     <% end %>
   </div>

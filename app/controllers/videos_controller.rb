@@ -67,6 +67,7 @@ class VideosController < ApplicationController
 
 
   def register
+    pDebug('register')
     # from http://codegolf.stackexchange.com/questions/4707/outputting-ordinal-numbers-1st-2nd-3rd
     def o(n)n.to_s+%w{th st nd rd}[n/10%10==1||n%10>3?0:n%10]end
 
@@ -101,11 +102,13 @@ class VideosController < ApplicationController
 
 
   def play
+    pDebug('play')
     if current_user.nil?
       flash[:danger] = "* Need to be logged in."
       redirect_to videos_path
     else
       @video = @video.decorate(view_context)
+      pDebug(@video.inspect)
     end
   end
 
@@ -131,6 +134,7 @@ class VideosController < ApplicationController
 
 
     def update_user_badges
+      pDebug('update_user_badges')
       awarded = ''
       Rule.all.each do |rule|
         UserVideo.where( :user_id => current_user.id ).each do |uv|
@@ -150,12 +154,9 @@ class VideosController < ApplicationController
               pDebug("Error in saving UserBadge: #{ub.errors.messages}")
             end
             break
-
           end
         end
-
       end
-
     end
 
 

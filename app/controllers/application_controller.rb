@@ -11,11 +11,13 @@ class ApplicationController < ActionController::Base
 
   def log_in
     session[:user_id] = params[:id]
-    redirect_to :back
+    # redirect_to :back
+    redirect_back(fallback_location: root_path)
   end
 
   def log_out
     session.delete :user_id
-    redirect_to :back
+    # redirect_to :back
+    redirect_back(fallback_location: root_path)
   end
 end

@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   has_many :user_videos
   has_many :videos, through: :user_videos
 
-  validates_presence_of :name
+  validates_presence_of :name, :company_id
 
   def to_s
     name
@@ -26,11 +26,11 @@ class User < ActiveRecord::Base
 
   def iterations(video)
     uv = UserVideo.where( :user_id => self.id, :video_id => video.id )
-    if uv.empty?
-      0
-    else
-      uv[0].iterations
-    end
+    uv.empty? ? 0 : uv[0].iterations
+  end
+
+  def self.by_letter(letter)
+    where("name LIKE ?", "#{letter}%").order(:name)
   end
 
 

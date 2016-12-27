@@ -53,7 +53,20 @@ gem 'pry'
 gem "binding_of_caller"
 gem "better_errors"
 
-gem 'compass-rails' 				 #, '~> 2.0.4'
+gem 'compass-rails' 
 gem "font-awesome-rails"
 gem 'r_kit', '~> 0.2.1.1'
-gem 'rspec-rails', '~> 3.0.0'
+
+gem 'rspec-rails' 
+gem 'factory_girl_rails'
+
+gem 'faker'
+
+gem 'capybara'
+
+gem 'guard-rspec'
+gem 'launchy'
+
+gem 'rails-controller-testing'
+
+

@@ -26,7 +26,10 @@ class BadgesController < ApplicationController
   # POST /badges
   # POST /badges.json
   def create
+    pDebug("Params: #{params.inspect}"  )
+
     @badge = Badge.new(badge_params)
+    pDebug("Badge: #{@badge.inspect}")
 
     respond_to do |format|
       if @badge.save
@@ -57,6 +60,9 @@ class BadgesController < ApplicationController
   # DELETE /badges/1.json
   def destroy
     @badge.destroy
+    pDebug(@badge.errors.messages)
+
+
     respond_to do |format|
       format.html { redirect_to badges_url, notice: 'Badge was successfully destroyed.' }
       format.json { head :no_content }
@@ -71,7 +77,7 @@ class BadgesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def badge_params
-      params.require(:badge).permit(:name, :fa_symbol,)
+      params.require(:badge).permit(:id, :name, :fa_symbol)
     end
 
 end

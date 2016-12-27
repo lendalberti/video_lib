@@ -1,8 +1,8 @@
 class CreateBadges < ActiveRecord::Migration
   def change
     create_table :badges do |t|
-      t.string :name
-      t.string :fa_symbol
+      t.string :name, null: false
+      t.string :fa_symbol, null: false
 
       t.timestamps
     end

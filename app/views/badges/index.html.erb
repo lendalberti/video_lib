@@ -4,9 +4,7 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Fa symbol</th>
-   
-      
+      <th colspan="2">Fa symbol</th>
       <th colspan="4"></th>
     </tr>
   </thead>
@@ -14,15 +12,12 @@
   <tbody>
     <% @badges.each do |badge| %>
       <tr>
-
         <td><%= badge.name %></td>
         <td><%= badge.fa_symbol %></td>
-
-
+        <td><span class='symbol' style='font-size: .2em;'><%= fa_icon badge.fa_symbol %></span></td>
         <td><%= link_to 'Show', badge %></td>
         <td><%= link_to 'Edit', edit_badge_path(badge) %></td>
         <td><%= link_to 'Destroy', badge, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-
       </tr>
     <% end %>
   </tbody>
